@@ -1,0 +1,185 @@
+var NameGen = require('randomNameGen');
+var Respawner4 = {
+    run: function(sourceAvai) {
+        sourceAvai = Game.rooms['W53S46'].energyAvailable;
+        console.log("Source Available in Room 4: " +  sourceAvai)
+        var upgraders4 = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader4');
+        //console.log('Upgraders3: ' + upgraders3.length);
+        var workers4 = _.filter(Game.creeps, (creep) => creep.memory.role == 'worker4');
+        //console.log('Workers3: ' + workers3.length);
+        var harvesters4 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester4');
+
+        if(workers4.length < 1) {
+            if(sourceAvai>=1800){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1700){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1600){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1500){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1400){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1300){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1200){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1100){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=1000){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=900){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=800){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=650){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=500){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE], newName, 
+                    {memory: {role: 'worker4'}});
+            }else if(sourceAvai>=350){
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,CARRY,CARRY,MOVE], newName, 
+                    {memory: {role: 'worker4'}});
+            }else{
+                var newName = 'Worker ' + NameGen.RandomName();
+                console.log('Spawning new worker: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,CARRY,MOVE], newName, 
+                    {memory: {role: 'worker4'}});
+            }
+        } else
+        
+        if (harvesters4.length < 1){
+            if(sourceAvai>=800){
+                var newName = 'Harvester ' + NameGen.RandomName();
+                console.log('Spawning new harvester: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'harvester4'}});
+            }else if(sourceAvai>=650){
+                var newName = 'Harvester ' + NameGen.RandomName();
+                console.log('Spawning new harvester: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'harvester4'}});
+            }else if(sourceAvai>=450){
+                var newName = 'Harvester ' + NameGen.RandomName();
+                console.log('Spawning new harvester: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], newName, 
+                    {memory: {role: 'harvester4'}});
+            }else if(sourceAvai>=350){
+                var newName = 'Harvester ' + NameGen.RandomName();
+                console.log('Spawning new harvester: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,CARRY,CARRY,MOVE], newName, 
+                    {memory: {role: 'harvester4'}});
+            }else{
+                var newName = 'Harvester ' + NameGen.RandomName();
+                console.log('Spawning new harvester: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,CARRY,MOVE], newName, 
+                    {memory: {role: 'harvester4'}});
+            }
+        } else
+
+        if(upgraders4.length < 1) {
+            if(sourceAvai>=1700){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1600){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1500){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1400){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1300){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1200){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1100){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=1000){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=900){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if(sourceAvai>=800){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else if (sourceAvai>=650){
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }else{
+                var newName = 'Upgrader ' + NameGen.RandomName();
+                console.log('Spawning new upgrader: ' + newName);
+                Game.spawns['Spawn4'].spawnCreep([WORK,CARRY,CARRY,MOVE,MOVE], newName,
+                    {memory: {role: 'upgrader4'}});
+            }
+        }
+    }
+};
+module.exports = Respawner4;
