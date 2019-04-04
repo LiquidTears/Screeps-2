@@ -1,0 +1,311 @@
+var roleWorker = require('role.worker');
+var roleUpgrader = require('role.upgrader');
+var roleMiner = require('role.miner');
+var roleTransporter = require('role.transporter');
+var roleLogistic = require('role.logistic');
+var roleBuilder = require('role.builder');
+var roleHarvester = require ('role.harvester');
+var roleArcher = require('role.archer');
+var roleGuard = require('role.guard');
+var roleHunter = require('role.hunter');
+var roleHunter2 = require('role.hunter2');
+var roleClaimer = require('role.claimer');
+var roleReserver = require('role.reserver');
+var Respawner = require('Respawner');
+var Respawner2 = require('Respawner2');
+var Respawner3 = require('Respawner3');
+var Respawner4 = require('Respawner4');
+var roleMobileUpgrader = require('role.mobileupgrader');
+var roleMobileWorker= require('role.mobileworker');
+var roleTank = require('role.tank');
+var roleSignGuy = require('role.signguy');
+var creepManager = require('creepManager');
+var reserveFlags = require('reserveFlags');
+var roleRemoteHarvester = require('role.remoteharvester');
+
+module.exports.loop = function () {
+
+    console.log('---------------');
+
+    for(var name in Memory.creeps) {
+        if(!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Rest in peace ', name, ' you did well...');
+        }
+    }
+
+    //creepManager.run();
+    reserveFlags.run();
+    
+    if(Game.spawns['Spawn1']) {
+        Respawner.run();
+    }
+    
+    //if(Game.spawns['Spawn2']){
+    //    Respawner2.run();
+    //}
+    
+    //Respawner3.run();
+    //Respawner4.run();
+    //towers.run();
+
+    for(var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if(creep.memory.role == 'worker') {
+            roleWorker.run(creep);
+        }
+
+        if(creep.memory.role == 'worker2') {
+            roleWorker.run(creep);
+        }
+        
+        if(creep.memory.role == 'worker3') {
+            roleWorker.run(creep);
+        }
+        
+        if(creep.memory.role == 'worker4') {
+            roleWorker.run(creep);
+        }
+
+        if(creep.memory.role == 'upgrader') {
+            roleUpgrader.run(creep);
+        }
+
+        if(creep.memory.role == 'upgrader2') {
+            roleUpgrader.run(creep);
+        }
+        
+        if(creep.memory.role == 'upgrader3') {
+            roleUpgrader.run(creep);
+        }
+        
+        if(creep.memory.role == 'upgrader4') {
+            roleUpgrader.run(creep);
+        }
+        
+        if(creep.memory.role == 'miner') {
+            roleMiner.run(creep);
+        }
+        
+        if(creep.memory.role == 'miner2') {
+            roleMiner.run(creep);
+        }
+        
+        if(creep.memory.role == 'transporter') {
+            roleTransporter.run(creep);
+        }
+        
+        if(creep.memory.role == 'transporter2') {
+            roleTransporter.run(creep);
+        }
+        
+        if(creep.memory.role == 'logistic') {
+            roleLogistic.run(creep);
+        }
+        
+        if(creep.memory.role == 'builder') {
+            roleBuilder.run(creep);
+        }
+        
+        if(creep.memory.role == 'harvester') {
+            roleHarvester.run(creep);
+        }
+        
+        if(creep.memory.role == 'harvester2') {
+            roleHarvester.run(creep);
+        }
+        
+        if(creep.memory.role == 'harvester3') {
+            roleHarvester.run(creep);
+        }
+        
+        if(creep.memory.role == 'harvester4') {
+            roleHarvester.run(creep);
+        }
+
+        if(creep.memory.role == 'guard'){
+            roleGuard.run(creep);
+        }
+        
+        if(creep.memory.role == 'hunter'){
+            roleHunter.run(creep);
+        }
+        
+        if(creep.memory.role == 'hunter2'){
+            roleHunter.run(creep);
+        }
+        
+        if(creep.memory.role == 'claimer'){
+            roleClaimer.run(creep);
+        }
+        
+        if(creep.memory.role == 'reserver'){
+            roleReserver.run(creep);
+        }
+        
+        if(creep.memory.role == 'remoteharvester'){
+            roleRemoteHarvester.run(creep);
+        }
+        
+        if(creep.memory.role == 'mobileupgrader'){
+            roleMobileUpgrader.run(creep);
+        }
+        
+        if(creep.memory.role == 'mobileworker'){
+            roleMobileWorker.run(creep);
+        }
+        
+        if(creep.memory.role == 'tank'){
+            roleTank.run(creep);
+        }
+        
+        if(creep.memory.role == 'tank2'){
+            roleTank.run(creep);
+        }
+        
+        if(creep.memory.role == 'towerbuster'){
+            roleTowerBuster.run(creep);
+        }
+        
+        if(creep.memory.role == 'signguy'){
+            roleSignGuy.run(creep);
+        }
+        
+        var tower = Game.getObjectById('5ba2ca57d427a962e2cd37d2');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5bad43fd5b796603befc70ec');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 6.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5bc642a0335e242a734ca2f7');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5bcb701c3e3f66599c8d2aec');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5bd4d46a42893926822e8b53');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5bd69fe8ed19f911978215e2');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5c7975690465564c3d0752da');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+        var tower = Game.getObjectById('5c7968ac0834fd58d8eba4b8');
+        if(tower) {
+            var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: (object) => {return (object.owner.username != 'Fluke')}});
+            if(closestHostile) {
+                tower.attack(closestHostile);
+                console.log("ALERT!!! BASE UNDER ATTACK!!! THIS IS NOT A DRILL!!! ALERT!!!")
+            } else {
+                if(tower.energy > ((tower.energyCapacity / 10)* 7.5)){
+                    var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax});
+                    if(closestDamagedStructure) {
+                        closestDamagedStructure.sort((a,b) => a.hits - b.hits);
+    	 	            tower.repair(closestDamagedStructure[0]);
+                    }
+                }
+            }
+        }
+    }
+}
