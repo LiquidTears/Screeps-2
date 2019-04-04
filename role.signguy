@@ -1,0 +1,32 @@
+var roleSignGuy = {
+    run: function(creep){
+        if(Game.flags.Checkpoint){
+            if(creep.memory.checkpoint == 0){
+            creep.moveTo(Game.flags.Checkpoint);
+            if(creep.pos.x == Game.flags.Checkpoint.pos.x && creep.pos.y == Game.flags.Checkpoint.pos.y){
+                creep.memory.checkpoint = 1;
+            }
+        }
+            if(creep.memory.checkpoint == 1){
+                //sign code
+                if(Game.flags.Sign && creep.room != Game.flags.Sign.room){
+                        creep.moveTo(Game.flags.Sign);
+                }else{
+                    creep.moveTo(creep.room.controller)
+                    creep.signController(creep.room.controller, "This county is claimed by the Principality of Antioch (PoA)")
+                }
+            }
+        }
+        else
+        {
+            if(Game.flags.Sign && creep.room != Game.flags.Sign.room){
+                    creep.moveTo(Game.flags.Sign);
+            }else{
+                creep.moveTo(creep.room.controller)
+                creep.signController(creep.room.controller, "This county is claimed by the Principality of Antioch (PoA)")
+            }
+        }
+    }
+};
+
+module.exports = roleSignGuy;
