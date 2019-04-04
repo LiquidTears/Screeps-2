@@ -1,0 +1,25 @@
+var roleReserver = {
+    run: function(creep) {
+        if(creep.memory.PFlag == 1){
+           var TargetFlag =  Game.flags.PFlag1
+        }
+        if(creep.memory.PFlag == 2){
+           var TargetFlag =  Game.flags.PFlag2
+        }
+        if(creep.memory.PFlag == 3){
+           var TargetFlag =  Game.flags.PFlag3
+        }
+        if(creep.memory.PFlag == 4){
+           var TargetFlag =  Game.flags.PFlag4
+        }
+        
+        if(TargetFlag && creep.room != TargetFlag.room){
+                    creep.moveTo(TargetFlag);
+            }else{
+                creep.moveTo(creep.room.controller)
+                creep.reserveController(creep.room.controller);
+            }
+        }
+};
+
+module.exports = roleReserver;
