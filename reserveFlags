@@ -1,0 +1,87 @@
+var reserveFlags = {
+    run: function(Flags){
+
+        var NameGen = require('randomNameGen');
+        var NumPFlags = _.filter(Game.flags, flag => flag.color === COLOR_PURPLE && flag.secondaryColor === COLOR_PURPLE);
+    
+        //console.log(_.filter(Game.flags, flag => flag.color === COLOR_PURPLE && flag.secondaryColor=== COLOR_PURPLE && flag.secondaryColor === COLOR_PURPLE));
+        
+        var reservers = _.filter(Game.creeps, (creep) => creep.memory.role == 'reserver');
+    //--------------------------------------
+        var ReserveRoom1 = _.filter(Game.creeps, (creep) => creep.memory.PFlag == 1);
+        var ReserveRoom2 = _.filter(Game.creeps, (creep) => creep.memory.PFlag == 2);
+        var ReserveRoom3 = _.filter(Game.creeps, (creep) => creep.memory.PFlag == 3);
+        var ReserveRoom4 = _.filter(Game.creeps, (creep) => creep.memory.PFlag == 4);
+        
+        var HarvestRoom1 = _.filter(Game.creeps, (creep) => creep.memory.H_PFlag == 1);
+        var HarvestRoom2 = _.filter(Game.creeps, (creep) => creep.memory.H_PFlag == 2);
+        var HarvestRoom3 = _.filter(Game.creeps, (creep) => creep.memory.H_PFlag == 3);
+        var HarvestRoom4 = _.filter(Game.creeps, (creep) => creep.memory.H_PFlag == 4);
+        //console.log("Number of PFlags: " + NumPFlags.length);
+        //console.log("Number of Creeps with Mem-PFlag1: " + ReserveRoom1.length); 
+    
+    //They need to respawn faster.
+        
+    
+        if (NumPflags = 0){
+            
+        }
+        if (NumPFlags.length == 1){
+            if (ReserveRoom1.length < 1){
+                var newName = 'Reserver ' + NameGen.RandomName();
+                console.log('Spawning new reserver: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([MOVE,CLAIM,CLAIM,MOVE], newName,
+                    {memory: {role: 'reserver', PFlag: 1, home: 1}});
+            }
+            if (HarvestRoom1.length < 1){
+                var newName = 'Remote Harvester ' + NameGen.RandomName();
+                console.log('Spawning new Remote Harvester: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'remoteharvester', H_PFlag: 1, home:1}});
+            }
+        }
+        
+        if (NumPFlags.length == 2){
+            if (ReserveRoom2.length < 1){
+                var newName = 'Reserver ' + NameGen.RandomName();
+                console.log('Spawning new reserver: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([MOVE,CLAIM,CLAIM,MOVE], newName,
+                    {memory: {role: 'reserver', PFlag: 2, home: 1}});
+            }
+            if (ReserveRoom1.length < 1){
+                var newName = 'Reserver ' + NameGen.RandomName();
+                console.log('Spawning new reserver: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([MOVE,CLAIM,CLAIM,MOVE], newName,
+                    {memory: {role: 'reserver', PFlag: 1, home: 1}});
+            }
+            if (HarvestRoom1.length < 1){
+                var newName = 'Remote Harvester ' + NameGen.RandomName();
+                console.log('Spawning new Remote Harvester: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'remoteharvester', H_PFlag: 1, home:1}});
+            }
+            if (HarvestRoom2.length < 1){
+                var newName = 'Remote Harvester ' + NameGen.RandomName();
+                console.log('Spawning new Remote Harvester: ' + newName);
+                Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], newName,
+                    {memory: {role: 'remoteharvester', H_PFlag: 2, home:1}});
+            }
+        }
+        
+        //not working yet, dont do these
+        if (NumPFlags.length == 3 && ReserveRoom3.length < 1){
+            var newName = 'Reserver ' + NameGen.RandomName();
+            console.log('Spawning new reserver: ' + newName);
+            Game.spawns['Spawn1'].spawnCreep([MOVE,CLAIM], newName,
+                {memory: {role: 'reserver', PFlag: 3, home: 1}});
+        }
+        if (NumPFlags.length == 4 && ReserveRoom4.length < 1){
+            var newName = 'Reserver ' + NameGen.RandomName();
+            console.log('Spawning new reserver: ' + newName);
+            Game.spawns['Spawn1'].spawnCreep([MOVE,CLAIM], newName,
+                {memory: {role: 'reserver', PFlag: 4, home: 1}});
+        }
+    
+    }
+}
+module.exports = reserveFlags;
