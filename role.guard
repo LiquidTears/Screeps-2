@@ -1,0 +1,170 @@
+var roleGuard = {
+    run: function(creep) {
+        
+        if(Game.flags.huntCheckpoint){
+            if(creep.memory.checkpoint == 0){
+            creep.moveTo(Game.flags.huntCheckpoint);
+            if(creep.pos.x == Game.flags.huntCheckpoint.pos.x && creep.pos.y == Game.flags.huntCheckpoint.pos.y){
+                creep.memory.checkpoint = 1;
+                }
+            }
+            
+            if(creep.memory.checkpoint == 1){
+            creep.moveTo(Game.flags.huntCheckpoint2);
+            if(creep.pos.x == Game.flags.huntCheckpoint2.pos.x && creep.pos.y == Game.flags.huntCheckpoint2.pos.y){
+                creep.memory.checkpoint = 2;
+                }
+            }
+            
+            if(creep.memory.checkpoint == 2){
+                //hunter code
+                if(creep.hits < creep.hitsMax * .7){
+                    creep.memory.hurt = true;
+                }
+                else {
+                    creep.memory.hurt = false;
+                }
+                
+                if(creep.memory.hurt){
+                    var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+                        filter: (hostile) => {return (hostile.owner.username != 'Fluke' && Game.creeps[name].includes('120105'))}});
+                    var structure = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+                    
+                    if(Game.flags.Heal && creep.room != Game.flags.Heal.room){
+                        creep.moveTo(Game.flags.Heal);
+                        creep.rangedAttack(target);
+                        if(creep.hits < creep.hitsMax){
+                            creep.heal(creep);
+                        }
+                    }
+                    else{
+                       creep.moveTo(Game.flags.Heal); 
+                    }
+                    if(target) {
+                        if(creep.rangedAttack(target) != 0){
+                            creep.heal(creep);
+                        }
+                    }
+                    else if(structure) {
+                        if(creep.rangedAttack(structure) != 0) {
+                            creep.heal(creep);
+                        }
+                        if(creep.hits < creep.hitsMax) {
+                            creep.heal(creep);
+                        }
+                    }
+                    else{
+                        creep.heal(creep);
+                    }
+                }
+                else{
+                    var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+                        filter: (hostile) => {return (hostile.owner.username != 'Fluke')}});
+                    var structure = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+                    
+                    if(Game.flags.Hunt && creep.room != Game.flags.Hunt.room){
+                        creep.moveTo(Game.flags.Hunt);
+                        if(creep.hits < creep.hitsMax){
+                            creep.heal(creep);
+                        }
+                    }
+                    
+                    else if(target) {
+                        if(creep.rangedAttack(target) != 0){
+                            creep.heal(creep);
+                            creep.moveTo(target);
+                        }
+                    }
+                    else if(structure){
+                        if(creep.rangedAttack(structure) != 0){
+                            creep.heal(creep);
+                            creep.moveTo(structure);
+                        }
+                        if(creep.hits < creep.hitsMax){
+                            creep.heal(creep);
+                        }
+                    }
+                    else{
+                        creep.heal(creep);
+                    }
+                }
+            }
+        }
+        else
+        {
+            //hunter code again
+            if(creep.hits < creep.hitsMax * .7){
+                creep.memory.hurt = true;
+            }
+            else {
+                creep.memory.hurt = false;
+            }
+            
+            if(creep.memory.hurt){
+                var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+                    filter: (hostile) => {return (hostile.owner.username != 'Fluke')}});
+                var structure = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+                
+                if(Game.flags.Heal && creep.room != Game.flags.Heal.room){
+                    creep.moveTo(Game.flags.Heal);
+                    creep.rangedAttack(target);
+                    if(creep.hits < creep.hitsMax){
+                        creep.heal(creep);
+                    }
+                }
+                else{
+                   creep.moveTo(Game.flags.Heal); 
+                }
+                if(target) {
+                    if(creep.rangedAttack(target) != 0){
+                        creep.heal(creep);
+                    }
+                }
+                else if(structure) {
+                    if(creep.rangedAttack(structure) != 0) {
+                        creep.heal(creep);
+                    }
+                    if(creep.hits < creep.hitsMax) {
+                        creep.heal(creep);
+                    }
+                }
+                else{
+                    creep.heal(creep);
+                }
+            }
+            else{
+                var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+                    filter: (hostile) => {return (hostile.owner.username != 'Fluke')}});
+                var structure = creep.pos.findClosestByPath(FIND_HOSTILE_STRUCTURES);
+                
+                if(Game.flags.Hunt && creep.room != Game.flags.Hunt.room){
+                    creep.moveTo(Game.flags.Hunt);
+                    if(creep.hits < creep.hitsMax){
+                        creep.heal(creep);
+                    }
+                }
+                
+                else if(target) {
+                    if(creep.rangedAttack(target) != 0){
+                        creep.heal(creep);
+                        creep.moveTo(target);
+                    }
+                }
+                else if(structure){
+                    if(creep.rangedAttack(structure) != 0){
+                        creep.heal(creep);
+                        creep.moveTo(structure);
+                    }
+                    if(creep.hits < creep.hitsMax){
+                        creep.heal(creep);
+                    }
+                }
+                else{
+                    creep.heal(creep);
+                }
+            }
+        }
+    }
+};
+
+module.exports = roleGuard;
