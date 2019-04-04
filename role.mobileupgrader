@@ -1,0 +1,77 @@
+var roleMobileUpgrader = {
+    run: function(creep) {
+        
+        if(Game.flags.workCheckpoint){
+            if(creep.memory.checkpoint == 0){
+            creep.moveTo(Game.flags.workCheckpoint);
+            if(creep.pos.x == Game.flags.workCheckpoint.pos.x && creep.pos.y == Game.flags.workCheckpoint.pos.y){
+                creep.memory.checkpoint = 1;
+                }
+            }
+            
+            if(creep.memory.checkpoint == 1){
+            creep.moveTo(Game.flags.workCheckpoint2);
+            if(creep.pos.x == Game.flags.workCheckpoint2.pos.x && creep.pos.y == Game.flags.workCheckpoint2.pos.y){
+                creep.memory.checkpoint = 2;
+                }
+            }
+            
+            if(creep.memory.checkpoint == 2){
+                //upgrader code
+                if(creep.carry.energy == creep.carryCapacity){
+                    creep.memory.isUpgrading = true;
+                    creep.say('🚧');
+                }
+                else if(creep.carry.energy == 0){
+                    creep.memory.isUpgrading = false;
+                    creep.say('🔄');
+                }
+        
+                if(creep.room != Game.flags.Work.room){
+                    creep.moveTo(Game.flags.Work, {visualizePathStyle: {stroke: '#ff0000'}});
+                } else {
+                    if(!creep.memory.isUpgrading) {
+                        var sources = creep.room.find(FIND_SOURCES);
+                        if(creep.harvest(sources[0]) != -6) {
+                            creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                        }
+                    }
+                    else {
+                        if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            //upgrader code again
+            if(creep.carry.energy == creep.carryCapacity){
+                creep.memory.isUpgrading = true;
+                creep.say('🚧');
+            }
+            else if(creep.carry.energy == 0){
+                creep.memory.isUpgrading = false;
+                creep.say('🔄');
+            }
+    
+            if(creep.room != Game.flags.Work.room){
+                creep.moveTo(Game.flags.Work, {visualizePathStyle: {stroke: '#ff0000'}});
+            } else {
+                if(!creep.memory.isUpgrading) {
+                    var sources = creep.room.find(FIND_SOURCES);
+                    if(creep.harvest(sources[0]) != -6) {
+                        creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                }
+                else {
+                    if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                }
+            }
+        }
+    }
+};
+module.exports = roleMobileUpgrader;
