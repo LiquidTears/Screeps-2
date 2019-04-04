@@ -1,0 +1,91 @@
+var creepManager = {
+    run: function(manager){
+    
+    var desiredWorkers = 1;
+    var desiredUpgraders = 1;
+    var desiredMiners = 0;
+    var desiredTransporters = 0;
+    var desiredLogistics = 0;
+    var desiredBuilders = 0;
+    var desiredHarvesters = 0;
+    var desiredMobileMiners = 0;
+    var desiredMobileLogistics = 0;
+    var desiredMobileUpgraders = 0;
+    var desiredMobileWorkers = 0;
+    var desiredClaimers = 0;
+    var desiredReservers = 0;
+    var desiredSignguys = 1;
+    var desiredHunters = 1;
+    var desiredTanks = 0;
+        
+    var Room1 = Game.rooms['W53S42']
+    var room1creeps = _.filter(Game.creeps, (creep) => creep.memory.home == 1);
+    var Room2 = Game.rooms['W52S42']
+    var room2creeps = _.filter(Game.creeps, (creep) => creep.memory.home == 2);
+    
+    //NORMAL CIVILLIAN CREEPS
+    var workers = _.filter(Game.creeps, (creep) => creep.memory.role == 'worker');
+    //console.log('Workers: ' + workers.length);
+    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+	var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
+	var transporters = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
+	var logistics = _.filter(Game.creeps, (creep) => creep.memory.role == 'logistic');
+	var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+	
+	//MOBILE CIVILLIAN CREEPS
+	var mobileminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mobileminer');
+	var mobilelogistics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mobilelogistic');
+	var mobileupgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'mobileupgrader');
+    var mobileworkers = _.filter(Game.creeps, (creep) => creep.memory.role == 'mobileworker');
+    var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
+    var reservers = _.filter(Game.creeps, (creep) => creep.memory.role == 'reserver');
+    var signguys = _.filter(Game.creeps, (creep) => creep.memory.role == 'signguy');
+	
+	//WAR CREEPS
+    var hunters = _.filter(Game.creeps, (creep) => creep.memory.role == 'hunter');
+    var tanks = _.filter(Game.creeps, (creep) => creep.memory.role == 'tank');
+    
+    console.log('Upgraders: ' + upgraders.length);
+    console.log('Creeps from Room 1: ' + room1creeps.length);
+    console.log('Desired Workers: ' + desiredWorkers);
+
+        if (desiredWorkers > workers.length){
+            console.log('test');
+        }
+        
+
+    }
+};
+module.exports = creepManager;
+
+    
+    
+    
+//    if (signguys.length < 1 && room1creeps.length < 1){
+//        SPAWN
+//    } else
+// --
+// This says: If there is less then 1 signguys, and less then 1 creep from room1... then spawn a signguy
+// Needs to say: If there is less then 1 signguy from room1... then spawn a signguy
+    
+
+
+//Core concept: When a creep dies, the system spawns a new one to replace him.
+// 1. Harvester from Room1 dies.
+// 2. Code sees that there is 1 less then the defined amount of Harvesters.
+// 3. Code checks which room is short a harvester, sees its Room1
+// 4. Code checks how much source is available in that room
+// 5. Code builds the largest Harvester creep it can with the source in Room1
+
+// - Creeps need to know what room they are from
+// - Code needs to be able to set creep amounts for each room
+
+
+
+//        if (signguys.length < 1) {
+//            var newName = 'SignGuy ' + NameGen.RandomName();
+//            console.log('Spawning new SignGuy: ' + newName);
+//            Game.spawns['Spawn1'].spawnCreep([MOVE], newName,
+//                {memory: {role: 'signguy', checkpoint: 0, home: 1}});
+//        } else
