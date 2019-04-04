@@ -1,0 +1,7 @@
+var roleTank = {
+    run: function(creep){
+        creep.moveTo(Game.flags.Tank);
+    }
+};
+
+module.exports = roleTank;
