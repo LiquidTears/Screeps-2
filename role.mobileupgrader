@@ -1,3 +1,5 @@
+//These guys go to Work flags, then just get to work upgrading stuff
+
 var roleMobileUpgrader = {
     run: function(creep) {
         
