@@ -1,3 +1,5 @@
+//These dont work last I checked. Just leave it be.
+
 var roleGuard = {
     run: function(creep) {
         
