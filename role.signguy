@@ -1,3 +1,5 @@
+//the pinicle of programming. I honestly don't know how I manged to make such a complex work of art. Anyway, they move to Sign flags and sign rooms. 
+
 var roleSignGuy = {
     run: function(creep){
         if(Game.flags.Checkpoint){
