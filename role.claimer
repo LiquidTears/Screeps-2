@@ -1,3 +1,5 @@
+//they move to Claim flags or claimCheckpoints, then when they arive in a target room, they Claim it
+
 var roleClaimer = {
     run: function(creep) {
         
