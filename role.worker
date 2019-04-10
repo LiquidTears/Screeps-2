@@ -1,3 +1,5 @@
+//the all-in-one civ creeps. They repair, harvest, and build! wow!
+
 var roleUpgrader = require('role.upgrader');
 
 var roleWorker = {
