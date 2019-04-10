@@ -1,3 +1,5 @@
+//They move to Work flags or workCheckpoint flags, then they build/harvest/repair
+
 var roleUpgrader = require('role.upgrader');
 var roleMobileWorker = {
     run: function(creep) {
