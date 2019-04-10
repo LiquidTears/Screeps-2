@@ -1,3 +1,5 @@
+//these work well with Miners. They transport from containers to various other places
+
 var roleUpgrader = require('role.upgrader');
 
 var roleTransporter = {
