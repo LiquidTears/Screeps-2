@@ -1,3 +1,5 @@
+//they only move to Tank flags. Thats it. I use them to tank turrets and such
+
 var roleTank = {
     run: function(creep){
         creep.moveTo(Game.flags.Tank);
