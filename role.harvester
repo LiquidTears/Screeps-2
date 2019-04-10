@@ -1,3 +1,5 @@
+//These Harvest energy and put it places.
+
 var roleUpgrader = require('role.upgrader');
 
 var roleHarvester = {
