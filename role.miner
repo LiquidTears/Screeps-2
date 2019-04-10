@@ -1,3 +1,5 @@
+// These guys go to energy nodes that have containers, then Harvest energy and drop it into the container at their feet.
+
 var roleMiner = {
 
     run: function(creep) {
