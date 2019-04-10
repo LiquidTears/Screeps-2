@@ -1,3 +1,5 @@
+//My pride and joys. Move to Hunt or huntCheckpoint flags... then kill shit. and if their health drops too low, they go to a Heal flag to be healed
+
 var roleHunter = {
     run: function(creep) {
         
